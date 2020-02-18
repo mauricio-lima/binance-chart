@@ -1,15 +1,17 @@
 function setupCandleStickChart(container, dataSource, name)
 {
     option = null;
-    var upColor = '#ec0000';
-    var upBorderColor = '#8A0000';
-    var downColor = '#00da3c';
+    var upColor         = '#ec0000';
+    var upBorderColor   = '#8A0000';
+    var downColor       = '#00da3c';
     var downBorderColor = '#008F28';
     
+    if (!dataSource)
+        return
     
     const myChart = echarts.init(container);
     //var app = {};
-    const data0 = splitData(dataSource)
+    const data0 = splitData(dataSource.data)
     
     function splitData(rawData) {
         var categoryData = [];
@@ -43,7 +45,7 @@ function setupCandleStickChart(container, dataSource, name)
     option = {
         id  : name,
         title: {
-            text: 'ML-BTC',
+            text: dataSource.title,
             left: 0
         },
         tooltip: {
