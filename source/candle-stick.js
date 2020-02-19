@@ -17,12 +17,20 @@ function setupCandleStickChart(container, dataSource, name)
         var categoryData = [];
         var values = []
         for (var i = 0; i < rawData.length; i++) {
-            categoryData.push(rawData[i].splice(0, 1)[0]);
-            values.push(rawData[i])
+            const dateTime = new Date(rawData[i].splice(0, 1)[0])
+            const format = []
+            format.push(dateTime.getUTCDate())
+            format.push(' ')
+            format.push(('0' + dateTime.getUTCHours()).substr(-2,2))
+            format.push(':')
+            format.push(('0' + dateTime.getUTCMinutes()).substr(-2,2))
+
+            categoryData.push(format.join(''));
+            values.push(rawData[i].splice(0,4).map(item => parseFloat(item) * 1000 * 1000))
         }
         return {
-            categoryData: categoryData,
-            values: values
+            categoryData : categoryData,
+            values       : values
         };
     }
     
@@ -34,12 +42,13 @@ function setupCandleStickChart(container, dataSource, name)
                 continue;
             }
             var sum = 0;
-            for (var j = 0; j < dayCount; j++) {
-                sum += data0.values[i - j][1];
+            for (var j = 0; j < dayCount; j++) 
+            {
+                sum += eval(data0.values[i - j][1])
             }
-            result.push(sum / dayCount);
+            result.push(Math.round( (sum / dayCount) * 1000 * 1000 * 1000) / 1000 / 1000 / 1000)
         }
-        return result;
+        return result
     }
     
     option = {
@@ -83,61 +92,61 @@ function setupCandleStickChart(container, dataSource, name)
         dataZoom: [
             {
                 type: 'inside',
-                start: 50,
+                start: 80,
                 end: 100
             },
             {
                 show: true,
                 type: 'slider',
                 top: '90%',
-                start: 50,
+                start: 80,
                 end: 100
             }
         ],
         series: [
             {
-                name: name,
-                type: 'candlestick',
-                data: data0.values,
-                animation: true,
-                animationDuration: 5000,
-                itemStyle: {
-                    color: upColor,
-                    color0: downColor,
-                    borderColor: upBorderColor,
-                    borderColor0: downBorderColor
+                name              :  name,
+                type              : 'candlestick',
+                data              :  data0.values,
+                animation         :  true,
+                animationDuration :  3000,
+                itemStyle : {
+                    color        : upColor,
+                    color0       : downColor,
+                    borderColor  : upBorderColor,
+                    borderColor0 : downBorderColor
                 },
-                markPoint: {
-                    label: {
-                        normal: {
-                            formatter: function (param) {
-                                return param != null ? 'A' + Math.round(param.value) : 'X';
+                markPoint : {
+                    label : {
+                        normal : {
+                            formatter : function (param) {
+                                return param != null ? Math.round(param.value) : 'X';
                             }
                         }
                     },
-                    data: [
+                    data : [
                         {
-                            name: 'XX Score',
-                            coord: ['2013/5/31', 2300],
-                            value: 2300,
-                            itemStyle: {
-                                color: 'rgb(41,60,85)'
+                            name      : 'XX Score',
+                            coord     : ['2013/5/31', 2300],
+                            value     : 2300,
+                            itemStyle : {
+                                color : 'rgb(41,60,85)'
                             }
                         },
-                        {
-                            name: 'highest value',
-                            type: 'max',
-                            valueDim: 'highest'
+                        {                                                                                
+                            name      : 'highest value',
+                            type      : 'max',
+                            valueDim  : 'highest'
                         },
                         {
-                            name: 'lowest value',
-                            type: 'min',
-                            valueDim: 'lowest'
+                            name      : 'lowest value',
+                            type      : 'min',
+                            valueDim  : 'lowest'
                         },
                         {
-                            name: 'average value on close',
-                            type: 'average',
-                            valueDim: 'close'
+                            name      : 'average value on close',
+                            type      : 'average',
+                            valueDim  : 'close'
                         }
                     ],
                     tooltip: {
@@ -181,52 +190,52 @@ function setupCandleStickChart(container, dataSource, name)
                             }
                         ],
                         {
-                            name: 'min line on close',
-                            type: 'min',
-                            valueDim: 'close'
+                            name     : 'min line on close',
+                            type     : 'min',
+                            valueDim : 'close'
                         },
                         {
-                            name: 'max line on close',
-                            type: 'max',
-                            valueDim: 'close'
+                            name     : 'max line on close',
+                            type     : 'max',
+                            valueDim : 'close'
                         }
                     ]
                 }
             },
             {
-                name: 'MA5',
-                type: 'line',
-                data: calculateMA(5),
-                smooth: true,
-                lineStyle: {
-                    opacity: 0.5
+                name        : 'MA5',
+                type        : 'line',
+                data        : calculateMA(5),
+                smooth      : true,
+                lineStyle   : {
+                    opacity : 0.5
                 }
             },
             {
-                name: 'MA10',
-                type: 'line',
-                data: calculateMA(10),
-                smooth: true,
-                lineStyle: {
-                    opacity: 0.5
+                name        : 'MA10',
+                type        : 'line',
+                data        : calculateMA(10),
+                smooth      : true,
+                lineStyle   : {
+                    opacity : 0.5
                 }
             },
             {
-                name: 'MA20',
-                type: 'line',
-                data: calculateMA(20),
-                smooth: true,
-                lineStyle: {
-                    opacity: 0.5
+                name        : 'MA20',
+                type        : 'line',
+                data        : calculateMA(20),
+                smooth      : true,
+                lineStyle   : {
+                    opacity : 0.5
                 }
             },
             {
-                name: 'MA30',
-                type: 'line',
-                data: calculateMA(30),
-                smooth: true,
-                lineStyle: {
-                    opacity: 0.5
+                name        : 'MA30',
+                type        : 'line',
+                data        : calculateMA(30),
+                smooth      : true,
+                lineStyle   : {
+                    opacity : 0.5
                 }
             },
     
