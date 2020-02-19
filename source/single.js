@@ -1,7 +1,10 @@
 (()=>{
     async function DOMLoaded()
     {
-        setupCandleStickChart(document.getElementById("container-1"), await loadJSON('pixv-btc-180220-0000-1515.json'), 'candles1')
+        //const filename = 'data-1.json'
+        const filename = 'pixv-btc-180220-0000-1515.json'
+
+        setupCandleStickChart(document.getElementById("container-1"), await loadJSON(filename), 'candles')
     }
 
     window.loadJSON = async (filename) => {
