@@ -26,7 +26,7 @@ function setupCandleStickChart(container, dataSource, name)
             format.push(('0' + dateTime.getUTCMinutes()).substr(-2,2))
 
             categoryData.push(format.join(''));
-            values.push(rawData[i].splice(0,4).map(item => parseFloat(item) * 1000 * 1000))
+            values.push(rawData[i].splice(0,4).map(item => parseFloat(item)))
         }
         return {
             categoryData : categoryData,
@@ -64,36 +64,39 @@ function setupCandleStickChart(container, dataSource, name)
             }
         },
         legend: {
-            data: [name, 'MA5', 'MA10', 'MA20', 'MA30']
+            data: ['candles', 'MA5', 'MA10', 'MA20', 'MA30']
         },
         backgroundColor: 'rgb(230,230,230)',
         grid: {
-            left: '10%',
-            right: '10%',
-            bottom: '15%'
+            left   : '10%',
+            right  : '10%',
+            bottom : '15%'
         },
         xAxis: {
-            type: 'category',
-            data: data0.categoryData,
-            scale: true,
-            boundaryGap: false,
-            axisLine: {onZero: false},
-            splitLine: {show: false},
-            splitNumber: 20,
-            min: 'dataMin',
-            max: 'dataMax'
+            type        : 'category',
+            data        : data0.categoryData,
+            scale       : true,
+            boundaryGap : false,
+            axisLine    : {onZero: false},
+            splitLine   : {show: true},
+            splitNumber : 20,
+            min         : 'dataMin',
+            max         : 'dataMax'
         },
         yAxis: {
-            scale: true,
-            splitArea: {
+            scale     : true,
+            splitArea : {
                 show: true
+            },
+            axisLabel : {
+                formatter : (value) => (value.toString() + '000').substr(0,10).replace('.', ',')
             }
         },
         dataZoom: [
             {
-                type: 'inside',
-                start: 80,
-                end: 100
+                type  : 'inside',
+                start : 80,
+                end   : 100
             },
             {
                 show: true,
@@ -110,6 +113,7 @@ function setupCandleStickChart(container, dataSource, name)
                 data              :  data0.values,
                 animation         :  true,
                 animationDuration :  3000,
+                animationEasing   : 'bounceIn',
                 itemStyle : {
                     color        : upColor,
                     color0       : downColor,
@@ -155,7 +159,7 @@ function setupCandleStickChart(container, dataSource, name)
                         }
                     }
                 },
-                markLine: {
+      /*        markLine: {
                     symbol: ['abc', 'none'],
                     data: [
                         [
@@ -200,7 +204,7 @@ function setupCandleStickChart(container, dataSource, name)
                             valueDim : 'close'
                         }
                     ]
-                }
+                }      // marline   */
             },
             {
                 name        : 'MA5',
