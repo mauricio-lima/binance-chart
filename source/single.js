@@ -1,10 +1,11 @@
 (()=>{
     async function DOMLoaded()
     {
-        //const filename = 'data-1.json'
-        const filename = 'pixv-btc-180220-0000-1515.json'
+        //const filename = 'data-1'
+        const filename = 'pixv-btc//data-180220-0000-180220-1515-utc'
+        //const filename = 'link-btc//data-190220-0000-190220-0400-utc'
 
-        setupCandleStickChart(document.getElementById("container-1"), await loadJSON(filename), 'candles')
+        setupCandleStickChart(document.getElementById("container-1"), await loadJSON('data//' + filename + '.json'), 'candles')
     }
 
     window.loadJSON = async (filename) => {
@@ -17,8 +18,6 @@
             if (response.status != 200)
                 throw new Error(response.statusText)
 
-            //const text = await response.text()
-            //const json = await JSON.parse(text)
             const json  = await response.json()
  
             return json

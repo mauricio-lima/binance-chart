@@ -1,17 +1,16 @@
 function setupCandleStickChart(container, dataSource, name)
 {
     option = null;
-    var upColor         = '#ec0000';
-    var upBorderColor   = '#8A0000';
-    var downColor       = '#00da3c';
-    var downBorderColor = '#008F28';
-    
+    var upColor         = '#00da3c';
+    var upBorderColor   = '#008F28';
+    var downColor       = '#ec0000';
+    var downBorderColor = '#8A0000';
+
     if (!dataSource)
         return
     
     const myChart = echarts.init(container);
-    //var app = {};
-    const data0 = splitData(dataSource.data)
+    const data0   = splitData(dataSource.data)
     
     function splitData(rawData) {
         var categoryData = [];
@@ -26,7 +25,7 @@ function setupCandleStickChart(container, dataSource, name)
             format.push(('0' + dateTime.getUTCMinutes()).substr(-2,2))
 
             categoryData.push(format.join(''));
-            values.push(rawData[i].splice(0,4).map(item => parseFloat(item)))
+            values.push([rawData[i][0], rawData[i][3], rawData[i][2], rawData[i][1]].map(item => parseFloat(item)))
         }
         return {
             categoryData : categoryData,
