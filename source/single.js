@@ -2,9 +2,9 @@
     async function DOMLoaded()
     {
         //const filename = 'data-1'
-        //const filename = 'pixv-btc//data-180220-0000-180220-0817-utc'
-        //const filename = 'link-btc//data-190220-0000-190220-0400-utc'
-        const filename = 'btc-usdt//data-200018-0300-200019-0300-utc'
+        //const filename = 'pixv-btc//2020//02//data-200218-0000-200218-0817-utc'
+        //const filename = 'link-btc//2020//02//data-200219-0000-200219-0400-utc'
+        const filename = 'btc-usdt//2020//02//data-200218-0300-200219-0300-utc'
 
         setupCandleStickChart(document.getElementById("container-1"), await loadJSON('data//' + filename + '.json'), 'candles')
     }
