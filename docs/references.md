@@ -6,6 +6,12 @@ https://www.echartsjs.com/en/option.html#series-candlestick.type
 eCharts Number format
 https://github.com/apache/incubator-echarts/blob/4.6.0/src/util/format.js#L191
 
+Epoch & Unix Timestamp Conversion Tools
+https://www.epochconverter.com/
+
+World Time Converter
+https://www.worldtimebuddy.com/utc-to-gmt-converter
+
 Binance Exchange API python implementation for automated trading
 https://github.com/sammchardy/python-binance
 
