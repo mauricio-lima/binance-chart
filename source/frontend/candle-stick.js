@@ -94,7 +94,7 @@ function setupCandleStickChart(container, dataSource, name)
         dataZoom: [
             {
                 type  : 'inside',
-                start : 80,
+                start : 95,
                 end   : 100
             },
             {
