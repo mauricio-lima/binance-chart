@@ -12,10 +12,11 @@ https://www.epochconverter.com/
 World Time Converter
 https://www.worldtimebuddy.com/utc-to-gmt-converter
 
+ISO 8601
+https://pt.wikipedia.org/wiki/ISO_8601
+
 How do you follow an HTTP Redirect in Node.js?
 https://stackoverflow.com/questions/7323932/how-do-you-follow-an-http-redirect-in-node-js
-
-
 
 Binance Exchange API python implementation for automated trading
 https://github.com/sammchardy/python-binance
