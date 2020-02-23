@@ -89,7 +89,7 @@ async function requestCandleDataOfDay(symbol, day, symbolDisplayName)
             const results = await Promise.all(fractions)
 
             resolve({
-                title  : symbol,
+                title  : symbolDisplayName,
                 data   : results[0].data.concat(results[1].data),
                 weight : results[1].weight
             })
