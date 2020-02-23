@@ -1,0 +1,14 @@
+{
+  "name": "binance-tools",
+  "version": "1.0.0",
+  "description": "Binance Tools",
+  "main": "candledata.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mauricio Lima",
+  "license": "ISC",
+  "dependencies": {
+    "follow-redirects": "^1.10.0"
+  }
+}
