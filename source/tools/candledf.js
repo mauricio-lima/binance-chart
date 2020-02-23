@@ -81,7 +81,7 @@ async function requestCandleDataOfDay(symbol, day, symbolDisplayName)
     day.setUTCHours(0,0,0,0)
     const timestamp = day.getTime()
     
-    const offsets = [0, 720]
+    const offsets = [0, 12*60*60]   //  12 hours, 60 minutos, 60 seconds
     return new Promise( async (resolve, reject) => {
         try
         {
