@@ -101,11 +101,11 @@ function setupCandleStickChart(container, dataSource, name)
                 end   : 100
             },
             {
-                show: true,
-                type: 'slider',
-                top: '90%',
-                start: 80,
-                end: 100
+                show  :  true,
+                type  : 'slider',
+                top   : '90.5%',
+                start :  80,
+                end   :  100
             }
         ],
         series: [
