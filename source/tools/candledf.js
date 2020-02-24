@@ -35,6 +35,10 @@ function formatDateTime(date)
 async function requestCandleDataFromStartUntilLimit(symbol, start, limit)
 {
     return new Promise( (resolve,reject) => {
+        const convertTimestamp = (timestamp, seconds) => {
+            return new Date(timestamp).toISOString().replace(/\d{2}\.\d{3}/, seconds)
+        }
+
         const url = 'http://binance.com/api/v3/klines'
 
         const request = http.get(`${url}?symbol=${symbol}&startTime=${start}&interval=1m&limit=${limit}`)
@@ -57,8 +61,20 @@ async function requestCandleDataFromStartUntilLimit(symbol, start, limit)
                     return reject(response.statusCode)
                 }
 
+                const mapping = JSON.parse(data.join('')).map( item => {
+                    return {
+                        openTime  : convertTimestamp(item[0], '00'),
+                        closeTime : convertTimestamp(item[6], '59'),
+                        values    : {
+                            open    : item[1],
+                            close   : item[4],
+                            minimum : item[3],
+                            maximum : item[2]
+                        }
+                    }
+                })
                 resolve({
-                    data       : JSON.parse(data.join('')),
+                    data       : mapping,
                     chunkCount : data.length,
                     weight     : weight
                 })
