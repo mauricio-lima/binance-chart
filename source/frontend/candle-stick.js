@@ -16,16 +16,19 @@ function setupCandleStickChart(container, dataSource, name)
         var categoryData = [];
         var values = []
         for (var i = 0; i < rawData.length; i++) {
-            const dateTime = new Date(rawData[i].splice(0, 1)[0])
+            const dateTime = new Date(rawData[i].openTime)
             const format = []
-            format.push(dateTime.getUTCDate())
-            format.push(' ')
             format.push(('0' + dateTime.getUTCHours()).substr(-2,2))
             format.push(':')
             format.push(('0' + dateTime.getUTCMinutes()).substr(-2,2))
+            format.push('\n')
+            format.push(dateTime.getUTCDate())
+            format.push('/')
+            format.push(('0' + (dateTime.getUTCMonth() + 1)).substr(-2,2))
 
             categoryData.push(format.join(''));
-            values.push([rawData[i][0], rawData[i][3], rawData[i][2], rawData[i][1]].map(item => parseFloat(item)))
+            //values.push([rawData[i][0], rawData[i][3], rawData[i][2], rawData[i][1]].map(item => parseFloat(item)))
+            values.push([rawData[i].values.open, rawData[i].values.close, rawData[i].values.minimum, rawData[i].values.maximum])
         }
         return {
             categoryData : categoryData,
