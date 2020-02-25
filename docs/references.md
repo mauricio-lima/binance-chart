@@ -16,7 +16,10 @@ bootstrap-datetimepicker
 https://tarruda.github.io/bootstrap-datetimepicker/
 
 Datepicker for Bootstrap
-https://www.eyecon.ro/bootstrap-datepicker/
+https://www.eyecon.ro/bootstrap-datepicker
+
+CSS Matic Box Shadow
+https://www.cssmatic.com/box-shadow
 
 Epoch & Unix Timestamp Conversion Tools
 https://www.epochconverter.com/
