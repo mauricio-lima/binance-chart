@@ -21,7 +21,7 @@
 
         $('.select2').select2()
             .on('change', (e) => {
-                coinSelected =  e.selected
+                coinSelected =  e.target.value
                 updateChart()
             })
 
