@@ -63,5 +63,4 @@
     }
 
     $( document ).ready(DOMLoaded)
-    //document.addEventListener('DOMContentLoaded', DOMLoaded)
 })()
