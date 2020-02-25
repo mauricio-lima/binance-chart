@@ -1,26 +1,45 @@
 (()=>{
+    let dateComponent
+    let coinSelected
+
     async function DOMLoaded()
     {
         $('.datepicker')
             .on('changeDate', async (e) => {
                 $(e.target).datepicker('hide')
 
-                const date = `${e.date.getUTCFullYear()}${('0' + (e.date.getUTCMonth() + 1)).substr(-2,2)}${('0' + (e.date.getUTCDate())).substr(-2,2)}`
-                const filename = `btc-usdt//${date.substr(0,4)}//${date.substr(4,2)}//data-btcusdt-${date}-0000-${date}-2359-utc`
-
-                console.log(filename)
-                const data = await loadJSON('data//' + filename + '.json')
-                setupCandleStickChart(document.getElementById("container-1"), data , 'candles')
+                updateChart()
             })
             .datepicker({
                 format    : 'dd/m/yyyy',
                 language  : 'pt-BR',
                 weekStart :  1,
-                color     : 'red'
+                color     : 'red',
             })
 
-        const filename = 'btc-usdt//2020//02//data-btcusdt-20200223-0000-20200223-2359-utc'
-        setupCandleStickChart(document.getElementById("container-1"), await loadJSON('data//' + filename + '.json'), 'candles')
+        dateComponent = $('#date').data('datepicker')
+
+        $('.select2').select2()
+            .on('change', (e) => {
+                coinSelected =  e.selected
+                updateChart()
+            })
+
+        dateComponent.setValue(new Date('2020-2-16'))
+        coinSelected = 'BTC - USDT'
+        updateChart()
+    }
+
+    async function updateChart()
+    {
+        const symbol = coinSelected.replace(/\s+/g,'').toLowerCase()
+
+        const date = `${dateComponent.date.getUTCFullYear()}${('0' + (dateComponent.date.getUTCMonth() + 1)).substr(-2,2)}${('0' + (dateComponent.date.getUTCDate())).substr(-2,2)}`
+        const filename = `${symbol}//${date.substr(0,4)}//${date.substr(4,2)}//data-${symbol.replace('-','')}-${date}-0000-${date}-2359-utc`
+
+        console.log(filename)
+        const data = await loadJSON('data//' + filename + '.json')
+        setupCandleStickChart(document.getElementById("container-1"), data , 'candles')
     }
 
     window.loadJSON = async (filename) => {
