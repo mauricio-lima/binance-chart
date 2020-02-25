@@ -12,6 +12,12 @@ https://cdnjs.com/libraries/echarts
 Bootstrap Download
 https://getbootstrap.com/docs/4.0/getting-started/download/
 
+bootstrap-datetimepicker
+https://tarruda.github.io/bootstrap-datetimepicker/
+
+Datepicker for Bootstrap
+https://www.eyecon.ro/bootstrap-datepicker/
+
 Epoch & Unix Timestamp Conversion Tools
 https://www.epochconverter.com/
 
