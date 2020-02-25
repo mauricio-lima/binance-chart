@@ -6,6 +6,12 @@ https://www.echartsjs.com/en/option.html#series-candlestick.type
 eCharts Number format
 https://github.com/apache/incubator-echarts/blob/4.6.0/src/util/format.js#L191
 
+eCharts CDN
+https://cdnjs.com/libraries/echarts
+
+Bootstrap Download
+https://getbootstrap.com/docs/4.0/getting-started/download/
+
 Epoch & Unix Timestamp Conversion Tools
 https://www.epochconverter.com/
 
@@ -23,3 +29,4 @@ https://github.com/sammchardy/python-binance
 
 Binance Trader (RC 2)
 https://github.com/yasinkuyu/binance-trader
+
