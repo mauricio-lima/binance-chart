@@ -248,7 +248,9 @@ function setupCandleStickChart(container, dataSource, name)
         ]
     }
 
-    if (option && typeof option === "object") {
-        myChart.setOption(option, true);
+    if (option && typeof option === "object") 
+    {
+        myChart.clear()
+        myChart.setOption(option, true, true);
     }
 }
