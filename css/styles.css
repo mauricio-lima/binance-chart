@@ -1,0 +1,41 @@
+
+body {
+    height     : 92%; 
+    margin     :15px; 
+    //background : yellow;
+    background : #eee;
+}
+
+#container-1 {
+    padding    : 5px;
+    margin     : 10px;
+    //border     : solid black 1px;
+}
+
+#container-1 canvas {
+    border     : solid #bbb 1px  !important;
+    box-shadow : 14px 10px 16px 0px rgba(150,135,150,1);
+}
+
+div {
+    padding : 1px
+}
+
+#toolbar {
+    margin-top : 20px
+}
+
+.select2-container .select2-selection--single{
+    height        : 31px  !important;
+    margin-top    :  1px;
+}
+
+.select2-container--default .select2-selection--single{
+     border        : 1px solid #ccc; 
+     border-left   : 0 none;
+     border-radius : 0 6px 6px 0    !important; 
+}
+
+li.select2-results__option {
+    padding : 2px !important;
+}

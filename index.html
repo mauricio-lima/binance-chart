@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>
+           Candle Stick Chart
+       </title>
+       
+       <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+       <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" />
+       <link rel="stylesheet"  href="css/bootstrap-datepicker.css"/>
+       <link rel="stylesheet"  href="css/styles.css"/>
+
+       <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"                                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="                     crossorigin="anonymous"></script>
+       <!-- script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script -->
+       <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.6.0/echarts.min.js"></script>
+       <script type="text/javascript" src="js/bootstrap-datepicker.js" type="text/javascript"></script>
+       <script type="text/javascript" src="single.js"      ></script>
+       <script type="text/javascript" src="candle-stick.js"></script>
+   </head>
+   <body>
+       <div class="toolbar">
+           <div class="row">
+                   <div class="input-group input-group-sm col-md-2">
+                       <div class="input-group-prepend">
+                           <label class="input-group-text" for="date">Date</span>
+                       </div>
+                       <input id="date"  class="form-control datepicker" type="text" placeholder="date" aria-label="Date"/>
+                   </div>
+                   <div class="input-group input-group-sm col-md-2">
+                       <div class="input-group-prepend">
+                           <span class="input-group-text">Coin</span>
+                       </div>
+                       <select id="coin"  class="form-control select2">
+                           <option value="btc-usdt" >BTC - USDT</option>
+                           <option value="eth-btc"  >ETH - BTC </option>
+                       </select>
+                   </div>
+           </div>
+       </div>
+       <div id="container-1" style="height: 96%; padding-top: 10px; margin: 3px"></div>
+   </body>
+</html>
